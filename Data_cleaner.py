@@ -14,6 +14,7 @@ df_Year['Temperature_linear'] = df_Year['Temperature'].interpolate(method='linea
 # Show Day, original Temperature, and interpolated Temperature
 #print(missing_rows[['Day', 'Temperature', 'Temperature_linear']])
 
+
 def average_temperature_per_month():
     montly_avg = df_Year.groupby('Month')['Temperature_linear'].mean()
     print(montly_avg)
@@ -25,7 +26,19 @@ def five_hottest_days():
 
 def overall_trend():
     fig,ax = plt.subplots(2,2,figsize=(12,8))
-    print("Showing overall trend...")
+    #For Line Chart
+    montly_avg = df_Year.groupby('Month')['Temperature_linear'].mean()
+    ax[0,0].plot(montly_avg.index, montly_avg.values, color='blue', marker='o', linestyle='-', label='Monthly Avg')
+    ax[0,0].set_title("Daily Temperature Trend")
+    ax[0,0].set_xlabel("Date")
+    ax[0,0].set_ylabel("Temperature (°C)")
+    ax[0,0].set_xticks(range(1, 13))
+    ax[0,0].set_yticks(range(19, 40, 1))
+    ax[0,0].grid()
+    
+
+    plt.tight_layout()
+    plt.show()
 
 while True:
     print("\nChoose an option:")
