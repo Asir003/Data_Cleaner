@@ -2,17 +2,18 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df=pd.read_csv("E:\Asir\Project1_Data_cleaner\Dhaka.csv")
-specific_year = 2023
-df_Year=df[df['Year'] == specific_year]
-df_Year['Temperature_linear'] = df_Year['Temperature'].interpolate(method='linear')
-#print(df[df['Year'] == specific_year][['Temperature','Temperature_linear']])
-#print(df[df['Year'] == specific_year].isnull().sum())
-#df.to_csv("E:\Asir\Project1_Data_cleaner\Dhaka.csv", index=False)
-#missing_rows = df[df['Temperature'].isna() & (df['Year'] == specific_year)]
+print("=======================================================")
+print("⚠ WARNING:")
+print("The CSV file should contain the following columns: Month, Day, and Temperature (or Temperature_linear).")
+print("Data can be from any city, but column names must match exactly for the analysis to work correctly.")
+print("=======================================================\n")
 
-# Show Day, original Temperature, and interpolated Temperature
-#print(missing_rows[['Day', 'Temperature', 'Temperature_linear']])
+path=input("Enter the path of your CSV file: ")
+df=pd.read_csv(path)
+specific_year = int(input("Enter the specific year you want to analyze (e.g., 2023): "))
+df_Year=df[df['Year'] == specific_year].copy()
+df_Year['Temperature_linear'] = df_Year['Temperature'].interpolate(method='linear')
+
 
 
 def average_temperature_per_month():
