@@ -30,12 +30,17 @@ def overall_trend():
     montly_avg = df_Year.groupby('Month')['Temperature_linear'].mean()
     ax[0,0].plot(montly_avg.index, montly_avg.values, color='blue', marker='o', linestyle='-', label='Monthly Avg')
     ax[0,0].set_title("Daily Temperature Trend")
-    ax[0,0].set_xlabel("Date")
+    ax[0,0].set_xlabel("Month")
     ax[0,0].set_ylabel("Temperature (°C)")
     ax[0,0].set_xticks(range(1, 13))
-    ax[0,0].set_yticks(range(19, 40, 1))
+    ax[0,0].set_yticks(range(19, 40, 2))
     ax[0,0].grid()
-    
+    #For Bar Chart
+    find = df_Year.groupby(['Month'])['Temperature_linear'].max()
+    ax[0,1].bar(find.index, find .values, color='orange', alpha=0.7,linewidth=0.8, label='Hottest Days')
+    ax[0,1].set_xlabel("Month")
+    ax[0,1].set_ylabel("Temperature (°C)")
+    ax[0,1].set_xticks(range(1, 13))
 
     plt.tight_layout()
     plt.show()
