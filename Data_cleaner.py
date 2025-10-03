@@ -1,10 +1,12 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 df=pd.read_csv("E:\Asir\Project1_Data_cleaner\Dhaka.csv")
-df['Temperature_linear'] = df['Temperature'].interpolate(method='linear')
 specific_year = 2023
-#print(df[df['Year'] == specific_year][['Temperature', 'Temperature_linear']])
+df_Year=df[df['Year'] == specific_year]
+df_Year['Temperature_linear'] = df_Year['Temperature'].interpolate(method='linear')
+#print(df[df['Year'] == specific_year][['Temperature','Temperature_linear']])
 #print(df[df['Year'] == specific_year].isnull().sum())
 #df.to_csv("E:\Asir\Project1_Data_cleaner\Dhaka.csv", index=False)
 #missing_rows = df[df['Temperature'].isna() & (df['Year'] == specific_year)]
@@ -13,15 +15,16 @@ specific_year = 2023
 #print(missing_rows[['Day', 'Temperature', 'Temperature_linear']])
 
 def average_temperature_per_month():
-    montly_avg = df.groupby('Month')['Temperature_linear'].mean()
+    montly_avg = df_Year.groupby('Month')['Temperature_linear'].mean()
     print(montly_avg)
 
 def five_hottest_days():
-    find = df.groupby(['Month','Day'])['Temperature_linear'].max()
+    find = df_Year.groupby(['Month','Day'])['Temperature_linear'].max()
     find_sorted=find.sort_values(ascending=False).head(5)
     print(find_sorted)
 
 def overall_trend():
+    fig,ax = plt.subplots(2,2,figsize=(12,8))
     print("Showing overall trend...")
 
 while True:
