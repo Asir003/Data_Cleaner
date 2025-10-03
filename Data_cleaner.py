@@ -29,7 +29,7 @@ def overall_trend():
     #For Line Chart
     montly_avg = df_Year.groupby('Month')['Temperature_linear'].mean()
     ax[0,0].plot(montly_avg.index, montly_avg.values, color='blue', marker='o', linestyle='-', label='Monthly Avg')
-    ax[0,0].set_title("Daily Temperature Trend")
+    ax[0,0].set_title("Monthly Average Temperature Trend")
     ax[0,0].set_xlabel("Month")
     ax[0,0].set_ylabel("Temperature (°C)")
     ax[0,0].set_xticks(range(1, 13))
@@ -38,9 +38,23 @@ def overall_trend():
     #For Bar Chart
     find = df_Year.groupby(['Month'])['Temperature_linear'].max()
     ax[0,1].bar(find.index, find .values, color='orange', alpha=0.7,linewidth=0.8, label='Hottest Days')
+    ax[0,1].set_title("Hottest Days per Month")
     ax[0,1].set_xlabel("Month")
     ax[0,1].set_ylabel("Temperature (°C)")
     ax[0,1].set_xticks(range(1, 13))
+    #For Histogram
+    ax[1,0].hist(df_Year['Temperature_linear'], bins=10, color='green', alpha=0.7, edgecolor='black')
+    ax[1,0].set_title("Temperature Distribution")
+    ax[1,0].set_xlabel("Temperature (°C)")
+    ax[1,0].set_ylabel("Number of Days")
+    
+    #For Bar Chart
+    find2 = df_Year.groupby(['Month'])['Temperature_linear'].min()
+    ax[1,1].bar(find2.index, find2.values, color='green', alpha=0.7,linewidth=0.8, label='Hottest Days')
+    ax[1,1].set_title("Coldest Days per Month")
+    ax[1,1].set_xlabel("Month")
+    ax[1,1].set_ylabel("Temperature (°C)")
+    ax[1,1].set_xticks(range(1, 13))
 
     plt.tight_layout()
     plt.show()
