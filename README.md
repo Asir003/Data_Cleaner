@@ -1,29 +1,28 @@
-🌡 Temperature Data Analysis Project
-📌 About the Project
+# 🌡 Temperature Data Analysis Project
 
+## 📌 About the Project
 This project analyzes daily temperature data from a CSV file and provides useful insights such as:
 
--Monthly average temperatures
--The top 5 hottest days of the year
--Overall temperature trends (line chart, bar charts, histogram)
--Option to download a combined trend chart as an image (.png)
+- Monthly average temperatures
+- The top 5 hottest days of the year
+- Overall temperature trends (line chart, bar charts, histogram)
+- Option to download a combined trend chart as an image (.png)
 
 It is designed to be interactive, letting users choose what kind of analysis they want to perform from a simple menu-driven interface.
 
+---
 
-⚠ Requirements
-
+## ⚠ Requirements
 Before running this project, make sure your CSV file contains the following columns (with exact names):
-
--Year
--Month
--Day
--Temperature
+- `Year`
+- `Month`
+- `Day`
+- `Temperature`
 🔹 Example format:
-    Year	Month	Day	Temperature
+    ```Year	Month	Day	Temperature
     2023	  1	     1	   24.5
     2023	  1	     2	   25.1
-    2023	  1	     3	   23.9
+    2023	  1	     3	   23.9```
 
 Note:The program will automatically generate a new column called    Temperature_linear using linear interpolation for missing values.
 
@@ -48,27 +47,27 @@ Choose an option from the menu:
 5. Exit
 
 📊 Features
-1️⃣ Average Temperature per Month
+1. Average Temperature per Month
     Displays the monthly average temperatures.
-2️⃣ 5 Hottest Days
+2. 5 Hottest Days
     Finds the top 5 hottest days of the selected year.
-3️⃣ Overall Trend
+3. Overall Trend
     Generates multiple plots in one window:
     - Line chart → Monthly average temperatures
     - Bar chart → Hottest day per month
     - Histogram → Temperature distribution
     - Bar chart → Coldest day per month
-4️⃣ Download Trend Chart
+4. Download Trend Chart
     Saves the overall trend charts as Overall_Trend_Chart.png with high quality (dpi=300).
 
 
 📂 Output Example
 Console Output (Monthly Average Example):
-Month
+```Month
 1    24.8
 2    27.2
-3    30.1
-...
+3    30.1```
+
 Saved Chart:
 A 2×2 figure containing line chart, bar charts, and histogram of the year’s temperature trends.
 
@@ -76,10 +75,9 @@ A 2×2 figure containing line chart, bar charts, and histogram of the year’s t
 Choose option 5 to exit the program safely.
 
 🚀 Future Improvements
-
     Support for multiple years comparison
     Adding precipitation / humidity analysis
     Export results as CSV/Excel report
 
-👨‍💻 Author
-    Developed by Asir Hamim
+## 👨‍💻 Author<br>  
+    Developed by **Asir Hamim**
